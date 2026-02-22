@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Advanced E‑commerce Demo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="logo">ShopLab</h1>
+      <div class="controls">
+        <input id="search" type="search" placeholder="Search products..." />
+        <select id="sort">
+          <option value="featured">Featured</option>
+          <option value="price-asc">Price: Low → High</option>
+          <option value="price-desc">Price: High → Low</option>
+        </select>
+        <button id="cart-toggle" class="btn">Cart (<span id="cart-count">0</span>)</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container main-grid">
+    <aside class="filters">
+      <h3>Filters</h3>
+      <label>Category</label>
+      <select id="filter-category">
+        <option value="all">All</option>
+      </select>
+      <label>Price range</label>
+      <input id="price-range" type="range" min="0" max="500" value="500" />
+      <div class="price-value">Max: $<span id="price-value">500</span></div>
+      <button id="clear-filters" class="btn small">Clear</button>
+    </aside>
+
+    <section class="products" id="products"></section>
+  </main>
+
+  <div id="cart" class="cart hidden">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button id="cart-close" class="btn small">Close</button>
+    </div>
+    <div id="cart-items" class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="cart-total">Total: $<span id="cart-total">0.00</span></div>
+      <button id="checkout" class="btn primary">Checkout</button>
+    </div>
+  </div>
+
+  <div id="overlay" class="overlay hidden"></div>
+
+  <template id="product-template">
+    <article class="card">
+      <img class="card-img" alt="product image" />
+      <div class="card-body">
+        <h4 class="card-title"></h4>
+        <div class="card-price"></div>
+        <div class="card-actions">
+          <button class="btn add">Add to cart</button>
+          <button class="btn secondary view">View</button>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <template id="cart-item-template">
+    <div class="cart-item">
+      <img class="cart-item-img" alt="" />
+      <div class="cart-item-info">
+        <div class="cart-item-title"></div>
+        <div class="cart-item-controls">
+          <button class="qty-decrease">−</button>
+          <span class="qty">1</span>
+          <button class="qty-increase">+</button>
+        </div>
+      </div>
+      <div class="cart-item-price"></div>
+      <button class="cart-item-remove">✕</button>
+    </div>
+  </template>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <button id="modal-close" class="btn small">Close</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="app.js" type="module"></script>
+</body>
+</html>
